@@ -1,171 +1,283 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
 <title>PokeRipping — $RIPPING</title>
-<meta name="description" content="PokeRipping rips real Pokémon card packs and airdrops them to $RIPPING holders. Hold bigger, win bigger.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:#efe7d3;}
+  @keyframes pr-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes pr-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+  @media(max-width:880px){
+    [data-nav]{display:none!important;}
+    [data-gamegrid]{grid-template-columns:1fr!important;}
+    [data-char="game2"]{display:none!important;}
+    [data-char="game1"]{max-width:240px!important;order:-1;}
+    [data-howhead]{grid-template-columns:1fr!important;align-items:start!important;}
+    [data-loop]{grid-template-columns:1fr 1fr!important;}
+    [data-tiers]{grid-template-columns:1fr!important;}
+  }
+  @media(max-width:560px){
+    [data-char="hero"]{opacity:.32!important;}
+    [data-loop]{grid-template-columns:1fr!important;}
+    [data-facts]{grid-template-columns:1fr!important;}
+  }
+  a{color:inherit;text-decoration:none;}
+</style>
+</helmet>
 
-<!-- scrolling marquee -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track">
-    <span>$RIPPING&nbsp;✦&nbsp;HOLD BIGGER, WIN BIGGER&nbsp;✦&nbsp;REAL CARDS, REAL AIRDROPS&nbsp;✦&nbsp;POKERIPPING&nbsp;✦&nbsp;</span>
-    <span>$RIPPING&nbsp;✦&nbsp;HOLD BIGGER, WIN BIGGER&nbsp;✦&nbsp;REAL CARDS, REAL AIRDROPS&nbsp;✦&nbsp;POKERIPPING&nbsp;✦&nbsp;</span>
+<div style="font-family:'Commissioner',sans-serif;color:#00128d;background:#efe7d3;overflow-x:hidden;font-weight:500;line-height:1.55;">
+
+<!-- ===== MARQUEE ===== -->
+<div style="background:#00128d;color:#fee132;overflow:hidden;white-space:nowrap;border-bottom:3px solid #00128d;">
+  <div data-ticker="1" style="display:inline-flex;animation:pr-marquee 30s linear infinite;font-family:'Commissioner',sans-serif;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;padding:9px 0;will-change:transform;">
+    <span style="padding:0 4px;">$RIPPING&nbsp;&nbsp;✦&nbsp;&nbsp;HOLD BIGGER, WIN BIGGER&nbsp;&nbsp;✦&nbsp;&nbsp;REAL CARDS, REAL AIRDROPS&nbsp;&nbsp;✦&nbsp;&nbsp;POKERIPPING&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+    <span style="padding:0 4px;">$RIPPING&nbsp;&nbsp;✦&nbsp;&nbsp;HOLD BIGGER, WIN BIGGER&nbsp;&nbsp;✦&nbsp;&nbsp;REAL CARDS, REAL AIRDROPS&nbsp;&nbsp;✦&nbsp;&nbsp;POKERIPPING&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
   </div>
 </div>
 
-<!-- header -->
-<header class="hdr">
-  <a href="#top" class="hdr__brand">
-    <img class="hdr__logo" src="assets/pokeripping-wordmark.png" alt="PokeRipping"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
-    <span class="hdr__brandText" style="display:none">PokeRipping</span>
+<!-- ===== HEADER ===== -->
+<header style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px clamp(18px,4vw,56px);background:rgba(239,231,211,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:2px solid rgba(0,18,141,.18);">
+  <a href="#top" style="display:flex;align-items:center;">
+    <img src="assets/pokeripping-wordmark.png" alt="PokeRipping" style="height:clamp(26px,3.4vw,36px);width:auto;display:block;">
   </a>
-  <nav class="hdr__nav">
-    <a href="#about">About</a>
-    <a href="#drop">The drop</a>
-    <a href="#game">Game</a>
-    <a href="#token">Tokenomics</a>
+  <nav style="display:flex;gap:30px;font-family:'Commissioner',sans-serif;font-weight:600;font-size:14px;letter-spacing:.5px;" data-nav="1">
+    <a href="#how" style="padding:4px 0;" style-hover="color:#0341a4;">How it works</a>
+    <a href="#drop" style="padding:4px 0;" style-hover="color:#0341a4;">The drop</a>
+    <a href="#game" style="padding:4px 0;" style-hover="color:#0341a4;">Game</a>
+    <a href="#token" style="padding:4px 0;" style-hover="color:#0341a4;">Tokenomics</a>
   </nav>
-  <a class="btn btn--buy" href="https://pump.fun/coin/6767" target="_blank" rel="noopener">Buy $RIPPING <span>↗</span></a>
+  <a href="https://pump.fun/coin/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-family:'Commissioner',sans-serif;font-weight:700;font-size:14px;letter-spacing:.5px;text-transform:uppercase;padding:11px 20px;border-radius:999px;border:3px solid #00128d;background:#fee132;color:#00128d;white-space:nowrap;transition:background .15s,color .15s;" style-hover="background:#00128d;color:#fee132;">Buy $RIPPING <span>↗</span></a>
 </header>
 
 <main id="top">
 
-  <!-- hero -->
-  <section class="hero">
-    <div class="hero__eyebrow"><span>SOLANA · PUMP.FUN</span><span>POKÉMON CARDS · ON-CHAIN</span></div>
-    <img id="logo" class="hero__logo" src="assets/pokeripping-wordmark.png" alt="PokeRipping"
-         onerror="this.style.display='none';document.getElementById('logoText').style.display='block';">
-    <h1 id="logoText" class="hero__logoText">Poke<span>Ripping</span></h1>
-
-    <p class="hero__tag">An autonomous pack-ripping machine. The bot claims trading fees, buys real
-      <b>Pokémon card packs</b> on Collector&nbsp;Crypt, rips them, and airdrops the cards to <b>$RIPPING</b> holders.</p>
-
-    <div class="hero__cta">
-      <a class="btn btn--buy big" href="https://pump.fun/coin/" target="_blank" rel="noopener">Buy $RIPPING <span>↗</span></a>
-      <a class="btn btn--ghost big" href="https://pokedungeon.fun" target="_blank" rel="noopener">Play PokeDungeon <span>↗</span></a>
-      <a class="btn btn--ghost big" href="https://x.com/PokeRipping" target="_blank" rel="noopener">Twitter / X <span>↗</span></a>
-    </div>
-
-    <img class="hero__char" src="assets/gengar.png" alt="" onerror="this.remove()">
-  </section>
-
-  <!-- about / the loop -->
-  <section id="about" class="about">
-    <div class="about__big" aria-hidden="true">ABOUT</div>
-    <div class="about__body">
-      <span class="label">WHAT IS POKERIPPING</span>
-      <p>$RIPPING is a token on <b>pump.fun</b>. Every trade generates fees — and instead of sitting idle,
-        those fees go to work. Our bot claims them, spends them on real <b>Pokémon card packs</b> at
-        <b>Collector&nbsp;Crypt</b>, opens the packs, and airdrops what it pulls straight to the wallets of
-        $RIPPING holders. The better the pull, the deeper into the holder leaderboard it can land.</p>
-    </div>
-
-    <ol class="loop">
-      <li><span>01</span><h3>Trade</h3><p>$RIPPING trades on pump.fun and accrues fees.</p></li>
-      <li><span>02</span><h3>Claim</h3><p>The bot automatically claims those creator fees.</p></li>
-      <li><span>03</span><h3>Rip</h3><p>Fees buy Pokémon packs on Collector Crypt — and rip them.</p></li>
-      <li><span>04</span><h3>Airdrop</h3><p>Pulled cards are airdropped to $RIPPING holders.</p></li>
-    </ol>
-  </section>
-
-  <!-- the drop / tiers -->
-  <section id="drop" class="drop">
-    <div class="drop__head">
-      <h2>THE DROP</h2>
-      <p>Where a card lands depends on how good the pull is. <b>Hold bigger, win bigger.</b></p>
-    </div>
-    <div class="tiers">
-      <article class="tier tier--gem">
-        <div class="tier__icon">💎</div>
-        <div class="tier__val">$100+</div>
-        <div class="tier__pool">random holder from the <b>TOP&nbsp;10</b></div>
-      </article>
-      <article class="tier tier--blue">
-        <div class="tier__icon">🔷</div>
-        <div class="tier__val">$50 – $100</div>
-        <div class="tier__pool">random holder from the <b>TOP&nbsp;25</b></div>
-      </article>
-      <article class="tier tier--white">
-        <div class="tier__icon">⚪</div>
-        <div class="tier__val">under $50</div>
-        <div class="tier__pool">random holder from the <b>TOP&nbsp;50</b></div>
-      </article>
-    </div>
-  </section>
-
-  <!-- game -->
-  <section id="game" class="game">
-    <img class="game__char" src="assets/bulbasaur.png" alt="" onerror="this.remove()">
-    <div class="game__text">
-      <span class="label">THE GAME</span>
-      <img class="game__logo" src="assets/pokedungeon-logo.png" alt="PokeDungeon"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-      <h2 style="display:none">POKE<br>DUNGEON</h2>
-      <p>Explore a foggy cavern, throw Poké Balls to catch creatures, loot chests (mind the mimic),
-        crack the Vault — and earn <b>$RIPPING</b> while you play.</p>
-      <ul class="game__facts">
-        <li><b>6 dungeons.</b> Dungeon&nbsp;1 is free for everyone — dungeons 2–6 are for $RIPPING holders only.</li>
-        <li><b>Up to 1,500,000 $RIPPING</b> per player across all six dungeons.</li>
-        <li><b>200,000,000 $RIPPING</b> total to be given away through the game.</li>
-      </ul>
-      <a class="btn btn--buy big" href="https://pokedungeon.fun" target="_blank" rel="noopener">Play at pokedungeon.fun <span>↗</span></a>
-    </div>
-    <img class="game__char game__char--2" src="assets/chikorita.png" alt="" onerror="this.remove()">
-  </section>
-
-  <!-- tokenomics -->
-  <section id="token" class="token">
-    <div class="token__head">
-      <h2>$RIPPING</h2>
-      <p>Total supply <b>1,000,000,000</b> · live on pump.fun</p>
-    </div>
-    <div class="token__chart">
-      <div class="donut">
-        <svg viewBox="0 0 220 220" role="img" aria-label="$RIPPING token distribution">
-          <circle cx="110" cy="110" r="80" fill="none" stroke="#e6dcc0" stroke-width="34"/>
-          <circle cx="110" cy="110" r="80" fill="none" stroke="#0341a4" stroke-width="34" stroke-dasharray="374 128.65" stroke-dashoffset="0" transform="rotate(-90 110 110)"/>
-          <circle cx="110" cy="110" r="80" fill="none" stroke="#fee132" stroke-width="34" stroke-dasharray="97.53 405.12" stroke-dashoffset="-376.99" transform="rotate(-90 110 110)"/>
-          <circle cx="110" cy="110" r="80" fill="none" stroke="#00128d" stroke-width="34" stroke-dasharray="22.13 480.52" stroke-dashoffset="-477.52" transform="rotate(-90 110 110)"/>
-        </svg>
-        <div class="donut__center"><b>1B</b><small>$RIPPING</small></div>
+  <!-- ===== HERO ===== -->
+  <section data-screen-label="Hero" style="position:relative;padding:clamp(48px,7vw,104px) clamp(20px,5vw,72px) clamp(64px,9vw,128px);background:#efe7d3;background-image:radial-gradient(rgba(3,65,164,.11) 1.7px,transparent 1.7px);background-size:28px 28px;overflow:hidden;">
+    <img data-char="hero" src="assets/gengar.png" alt="" style="position:absolute;z-index:1;right:clamp(-40px,-1vw,40px);top:clamp(40px,9vw,90px);width:clamp(220px,30vw,440px);transform:rotate(6deg);filter:drop-shadow(0 22px 38px rgba(0,18,141,.30));animation:pr-float 6s ease-in-out infinite;pointer-events:none;">
+    <div style="position:relative;z-index:2;max-width:1180px;margin:0 auto;">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;">
+        <span style="font-family:'Commissioner',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:#0341a4;background:rgba(254,225,50,.5);border:2px solid #00128d;border-radius:999px;padding:6px 14px;white-space:nowrap;">Solana · pump.fun</span>
+        <span style="font-family:'Commissioner',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:#0341a4;background:rgba(254,225,50,.5);border:2px solid #00128d;border-radius:999px;padding:6px 14px;white-space:nowrap;">Pokémon cards · on-chain</span>
       </div>
-      <ul class="legend">
-        <li class="lg"><span class="lg__dot" style="background:#0341a4"></span><span class="lg__main">75% — 750,000,000</span><span class="lg__sub">Circulating — freely traded on pump.fun</span></li>
-        <li class="lg"><span class="lg__dot" style="background:#fee132"></span><span class="lg__main">20% — 200,000,000</span><span class="lg__sub">Airdrops &amp; game rewards</span></li>
-        <li class="lg"><span class="lg__dot" style="background:#00128d"></span><span class="lg__main">5% — 50,000,000</span><span class="lg__sub">Team — locked</span></li>
-      </ul>
+      <img src="assets/pokeripping-wordmark.png" alt="PokeRipping" style="display:block;width:min(680px,82vw);height:auto;margin:0 0 28px;filter:drop-shadow(0 14px 22px rgba(0,18,141,.22));">
+      <h1 style="font-family:'Commissioner',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(30px,4.8vw,62px);line-height:1.06;letter-spacing:-.5px;color:#00128d;max-width:14ch;">Rips real packs.<br><span style="color:#0341a4;">Airdrops</span> real <span style="color:#0341a4;">cards.</span></h1>
+      <p style="max-width:560px;margin:26px 0 0;font-size:clamp(16px,1.7vw,19px);font-weight:500;line-height:1.6;">An autonomous pack-ripping machine. The bot claims trading fees, buys real <b style="font-weight:700;color:#0341a4;">Pokémon card packs</b> on Collector&nbsp;Crypt, rips them, and airdrops the cards straight to <b style="font-weight:700;color:#0341a4;">$RIPPING</b> holders.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:34px;">
+        <a href="https://pump.fun/coin/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Commissioner',sans-serif;font-weight:700;font-size:15px;letter-spacing:.5px;text-transform:uppercase;padding:15px 28px;border-radius:999px;border:3px solid #00128d;background:#fee132;color:#00128d;transition:background .15s,color .15s;" style-hover="background:#00128d;color:#fee132;">Buy $RIPPING <span>↗</span></a>
+        <a href="https://pokedungeon.fun" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Commissioner',sans-serif;font-weight:700;font-size:15px;letter-spacing:.5px;text-transform:uppercase;padding:15px 28px;border-radius:999px;border:3px solid #00128d;background:transparent;color:#00128d;transition:background .15s,color .15s,border-color .15s;" style-hover="background:#0341a4;color:#efe7d3;border-color:#0341a4;">Play PokeDungeon <span>↗</span></a>
+        <a href="https://x.com/PokeRipping" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Commissioner',sans-serif;font-weight:700;font-size:15px;letter-spacing:.5px;text-transform:uppercase;padding:15px 28px;border-radius:999px;border:3px solid #00128d;background:transparent;color:#00128d;transition:background .15s,color .15s,border-color .15s;" style-hover="background:#0341a4;color:#efe7d3;border-color:#0341a4;">Twitter / X <span>↗</span></a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,64px);margin-top:clamp(44px,6vw,72px);">
+        <div><div style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:clamp(40px,5vw,64px);line-height:1;color:#00128d;">1B</div><div style="font-family:'Commissioner',sans-serif;font-weight:600;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#0341a4;margin-top:6px;">Total supply</div></div>
+        <div style="border-left:2px solid rgba(0,18,141,.2);padding-left:clamp(28px,5vw,64px);"><div style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:clamp(40px,5vw,64px);line-height:1;color:#00128d;">200M</div><div style="font-family:'Commissioner',sans-serif;font-weight:600;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#0341a4;margin-top:6px;">To holders</div></div>
+        <div style="border-left:2px solid rgba(0,18,141,.2);padding-left:clamp(28px,5vw,64px);"><div style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:clamp(40px,5vw,64px);line-height:1;color:#00128d;">6</div><div style="font-family:'Commissioner',sans-serif;font-weight:600;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#0341a4;margin-top:6px;">Dungeons</div></div>
+      </div>
     </div>
-    <a class="btn btn--buy big center" href="https://pump.fun/coin/" target="_blank" rel="noopener">Buy $RIPPING on pump.fun <span>↗</span></a>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section id="how" data-screen-label="How it works" style="background:#00128d;color:#efe7d3;padding:clamp(64px,8vw,120px) clamp(20px,5vw,72px);">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(28px,4vw,56px);" data-cols="how">
+        <div data-reveal data-howhead="1" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:end;">
+          <h2 style="font-family:'Commissioner',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,6.2vw,82px);line-height:1.0;letter-spacing:-.5px;color:#fee132;">The<br>loop</h2>
+          <p style="max-width:620px;font-size:clamp(15px,1.6vw,18px);font-weight:500;line-height:1.65;color:rgba(239,231,211,.92);padding-bottom:8px;">$RIPPING is a token on <b style="font-weight:700;color:#fee132;">pump.fun</b>. Every trade generates fees — and instead of sitting idle, those fees go to work. The bot claims them, buys real <b style="font-weight:700;color:#fee132;">Pokémon card packs</b> at <b style="font-weight:700;color:#fee132;">Collector&nbsp;Crypt</b>, opens them, and airdrops the pulls straight to holder wallets. The better the pull, the deeper into the leaderboard it can land.</p>
+        </div>
+      </div>
+      <ol data-reveal style="list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(40px,5vw,64px);" data-loop="1">
+        <li style="position:relative;padding:26px 22px 28px;background:rgba(255,255,255,.05);border:2px solid rgba(254,225,50,.4);border-radius:20px;">
+          <span style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:14px;letter-spacing:2px;color:#00128d;background:#fee132;border-radius:999px;padding:4px 12px;">01</span>
+          <h3 style="font-family:'Commissioner',sans-serif;font-weight:800;text-transform:uppercase;font-size:30px;letter-spacing:1px;margin:16px 0 8px;color:#fff;">Trade</h3>
+          <p style="font-size:14px;line-height:1.55;color:rgba(239,231,211,.85);font-weight:500;">$RIPPING trades on pump.fun and accrues creator fees.</p>
+        </li>
+        <li style="position:relative;padding:26px 22px 28px;background:rgba(255,255,255,.05);border:2px solid rgba(254,225,50,.4);border-radius:20px;">
+          <span style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:14px;letter-spacing:2px;color:#00128d;background:#fee132;border-radius:999px;padding:4px 12px;">02</span>
+          <h3 style="font-family:'Commissioner',sans-serif;font-weight:800;text-transform:uppercase;font-size:30px;letter-spacing:1px;margin:16px 0 8px;color:#fff;">Claim</h3>
+          <p style="font-size:14px;line-height:1.55;color:rgba(239,231,211,.85);font-weight:500;">The bot automatically claims those fees on-chain.</p>
+        </li>
+        <li style="position:relative;padding:26px 22px 28px;background:rgba(255,255,255,.05);border:2px solid rgba(254,225,50,.4);border-radius:20px;">
+          <span style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:14px;letter-spacing:2px;color:#00128d;background:#fee132;border-radius:999px;padding:4px 12px;">03</span>
+          <h3 style="font-family:'Commissioner',sans-serif;font-weight:800;text-transform:uppercase;font-size:30px;letter-spacing:1px;margin:16px 0 8px;color:#fff;">Rip</h3>
+          <p style="font-size:14px;line-height:1.55;color:rgba(239,231,211,.85);font-weight:500;">Fees buy Pokémon packs on Collector Crypt — and rip them.</p>
+        </li>
+        <li style="position:relative;padding:26px 22px 28px;background:#fee132;border:2px solid #fee132;border-radius:20px;">
+          <span style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:14px;letter-spacing:2px;color:#fee132;background:#00128d;border-radius:999px;padding:4px 12px;">04</span>
+          <h3 style="font-family:'Commissioner',sans-serif;font-weight:800;text-transform:uppercase;font-size:30px;letter-spacing:1px;margin:16px 0 8px;color:#00128d;">Airdrop</h3>
+          <p style="font-size:14px;line-height:1.55;color:#00128d;font-weight:600;">Pulled cards are airdropped straight to $RIPPING holders.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== THE DROP ===== -->
+  <section id="drop" data-screen-label="The drop" style="background:#efe7d3;padding:clamp(64px,8vw,120px) clamp(20px,5vw,72px);">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal>
+        <span style="display:inline-block;font-family:'Commissioner',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:#0341a4;background:rgba(254,225,50,.5);border:2px solid #00128d;border-radius:999px;padding:6px 14px;margin-bottom:18px;">Where cards land</span>
+        <h2 style="font-family:'Commissioner',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,6.2vw,82px);line-height:1.0;letter-spacing:-.5px;color:#00128d;">The drop</h2>
+        <p style="max-width:640px;margin-top:18px;font-size:clamp(16px,1.7vw,19px);font-weight:500;">Where a card lands depends on how good the pull is. <b style="font-weight:700;color:#0341a4;">Hold bigger, win bigger.</b></p>
+      </div>
+      <div data-reveal style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(40px,5vw,60px);" data-tiers="1">
+        <article style="background:#00128d;color:#efe7d3;border:3px solid #00128d;border-radius:24px;padding:34px 28px 38px;">
+          <div style="font-size:40px;line-height:1;">💎</div>
+          <div style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:clamp(36px,4.6vw,56px);letter-spacing:.5px;margin:18px 0 12px;color:#fee132;">$100+</div>
+          <div style="font-size:15px;font-weight:500;color:rgba(239,231,211,.9);">random holder from the <b style="font-weight:700;color:#fff;">TOP&nbsp;10</b></div>
+        </article>
+        <article style="background:#fbf6e8;border:3px solid #00128d;border-radius:24px;padding:34px 28px 38px;">
+          <div style="font-size:40px;line-height:1;">🔷</div>
+          <div style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:clamp(36px,4.6vw,56px);letter-spacing:.5px;margin:18px 0 12px;color:#0341a4;">$50 – $100</div>
+          <div style="font-size:15px;font-weight:500;color:#00128d;">random holder from the <b style="font-weight:700;">TOP&nbsp;25</b></div>
+        </article>
+        <article style="background:#fbf6e8;border:3px solid #00128d;border-radius:24px;padding:34px 28px 38px;">
+          <div style="font-size:40px;line-height:1;">⚪</div>
+          <div style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:clamp(36px,4.6vw,56px);letter-spacing:.5px;margin:18px 0 12px;color:#00128d;">under $50</div>
+          <div style="font-size:15px;font-weight:500;color:#00128d;">random holder from the <b style="font-weight:700;">TOP&nbsp;50</b></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GAME ===== -->
+  <section id="game" data-screen-label="Game" style="background:#00128d;color:#efe7d3;padding:clamp(64px,8vw,120px) clamp(20px,5vw,72px);overflow:hidden;">
+    <div data-gamegrid="1" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr) minmax(0,1fr);align-items:center;gap:clamp(8px,2vw,28px);">
+    <img data-char="game1" src="assets/bulbasaur.png" alt="" style="width:100%;max-width:320px;justify-self:center;filter:drop-shadow(0 16px 30px rgba(0,0,0,.4));pointer-events:none;">
+    <div style="text-align:center;">
+      <span style="display:inline-block;font-family:'Commissioner',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:#00128d;background:#fee132;border-radius:999px;padding:6px 14px;margin-bottom:24px;">The game</span>
+      <img src="assets/pokedungeon-logo.png" alt="PokeDungeon" style="display:block;width:min(520px,90%);height:auto;margin:0 auto 26px;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35));">
+      <p style="max-width:560px;margin:0 auto;font-size:clamp(16px,1.7vw,19px);font-weight:500;line-height:1.65;color:rgba(239,231,211,.92);">Explore a foggy cavern, throw Poké Balls to catch creatures, loot chests (mind the mimic), crack the Vault — and earn <b style="font-weight:700;color:#fee132;">$RIPPING</b> while you play.</p>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px;margin:32px auto 30px;max-width:520px;text-align:left;" data-facts="1">
+        <div style="background:rgba(255,255,255,.05);border:2px solid rgba(254,225,50,.4);border-radius:18px;padding:18px 22px;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:18px;">
+          <div style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,42px);color:#fee132;line-height:1;">6</div>
+          <div style="font-size:13.5px;font-weight:500;line-height:1.45;margin-top:0;color:rgba(239,231,211,.85);">dungeons. #1 free for all — 2–6 for $RIPPING holders.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border:2px solid rgba(254,225,50,.4);border-radius:18px;padding:18px 22px;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:18px;">
+          <div style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,42px);color:#fee132;line-height:1;">1.5M</div>
+          <div style="font-size:13.5px;font-weight:500;line-height:1.45;margin-top:0;color:rgba(239,231,211,.85);">$RIPPING max per player across all six dungeons.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border:2px solid rgba(254,225,50,.4);border-radius:18px;padding:18px 22px;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:18px;">
+          <div style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,42px);color:#fee132;line-height:1;">200M</div>
+          <div style="font-size:13.5px;font-weight:500;line-height:1.45;margin-top:0;color:rgba(239,231,211,.85);">$RIPPING total given away through the game.</div>
+        </div>
+      </div>
+      <a href="https://pokedungeon.fun" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Commissioner',sans-serif;font-weight:700;font-size:15px;letter-spacing:.5px;text-transform:uppercase;padding:15px 30px;border-radius:999px;border:3px solid #fee132;background:#fee132;color:#00128d;transition:background .15s,color .15s;" style-hover="background:transparent;color:#fee132;">Play at pokedungeon.fun <span>↗</span></a>
+    </div>
+    <img data-char="game2" src="assets/chikorita.png" alt="" style="width:100%;max-width:320px;justify-self:center;transform:scaleX(-1);filter:drop-shadow(0 16px 30px rgba(0,0,0,.4));pointer-events:none;">
+    </div>
+  </section>
+
+  <!-- ===== TOKENOMICS ===== -->
+  <section id="token" data-screen-label="Tokenomics" style="background:#efe7d3;padding:clamp(64px,8vw,120px) clamp(20px,5vw,72px);">
+    <div style="max-width:1180px;margin:0 auto;text-align:center;">
+      <div data-reveal>
+        <span style="display:inline-block;font-family:'Commissioner',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:#0341a4;background:rgba(254,225,50,.5);border:2px solid #00128d;border-radius:999px;padding:6px 14px;margin-bottom:18px;">Tokenomics</span>
+        <h2 style="font-family:'Commissioner',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(44px,7vw,94px);line-height:1.0;letter-spacing:-.5px;color:#0341a4;">$Ripping</h2>
+        <p style="font-size:clamp(15px,1.6vw,18px);font-weight:500;margin-top:10px;">Total supply <b style="font-weight:700;color:#0341a4;">1,000,000,000</b> · live on pump.fun</p>
+      </div>
+      <div data-reveal style="display:flex;align-items:center;justify-content:center;gap:clamp(32px,5vw,72px);flex-wrap:wrap;margin:clamp(40px,5vw,56px) 0 36px;text-align:left;" data-chart="1">
+        <div style="position:relative;width:clamp(240px,30vw,320px);flex:0 0 auto;">
+          <svg viewBox="0 0 220 220" role="img" aria-label="$RIPPING token distribution" style="width:100%;height:auto;display:block;">
+            <circle cx="110" cy="110" r="80" fill="none" stroke="#e6dcc0" stroke-width="34"></circle>
+            <circle cx="110" cy="110" r="80" fill="none" stroke="#0341a4" stroke-width="34" stroke-dasharray="374 128.65" stroke-dashoffset="0" transform="rotate(-90 110 110)"></circle>
+            <circle cx="110" cy="110" r="80" fill="none" stroke="#fee132" stroke-width="34" stroke-dasharray="97.53 405.12" stroke-dashoffset="-376.99" transform="rotate(-90 110 110)"></circle>
+            <circle cx="110" cy="110" r="80" fill="none" stroke="#00128d" stroke-width="34" stroke-dasharray="22.13 480.52" stroke-dashoffset="-477.52" transform="rotate(-90 110 110)"></circle>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <b style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:clamp(44px,6vw,62px);color:#00128d;line-height:.9;">1B</b>
+            <small style="font-family:'Commissioner',sans-serif;font-weight:600;letter-spacing:2px;color:#0341a4;font-size:13px;">$RIPPING</small>
+          </div>
+        </div>
+        <ul style="list-style:none;display:grid;gap:14px;width:min(440px,92vw);">
+          <li style="display:grid;grid-template-columns:22px 1fr;column-gap:14px;row-gap:2px;align-items:center;background:#fbf6e8;border:2px solid #00128d;border-radius:16px;padding:15px 18px;">
+            <span style="grid-row:1 / 3;align-self:center;width:22px;height:22px;border-radius:7px;border:2px solid #00128d;background:#0341a4;"></span>
+            <span style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:20px;letter-spacing:.5px;color:#00128d;">75% — 750,000,000</span>
+            <span style="font-size:13px;line-height:1.4;font-weight:500;">Circulating — freely traded on pump.fun</span>
+          </li>
+          <li style="display:grid;grid-template-columns:22px 1fr;column-gap:14px;row-gap:2px;align-items:center;background:#fbf6e8;border:2px solid #00128d;border-radius:16px;padding:15px 18px;">
+            <span style="grid-row:1 / 3;align-self:center;width:22px;height:22px;border-radius:7px;border:2px solid #00128d;background:#fee132;"></span>
+            <span style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:20px;letter-spacing:.5px;color:#00128d;">20% — 200,000,000</span>
+            <span style="font-size:13px;line-height:1.4;font-weight:500;">Airdrops &amp; game rewards</span>
+          </li>
+          <li style="display:grid;grid-template-columns:22px 1fr;column-gap:14px;row-gap:2px;align-items:center;background:#fbf6e8;border:2px solid #00128d;border-radius:16px;padding:15px 18px;">
+            <span style="grid-row:1 / 3;align-self:center;width:22px;height:22px;border-radius:7px;border:2px solid #00128d;background:#00128d;"></span>
+            <span style="font-family:'Commissioner',sans-serif;font-weight:800;font-size:20px;letter-spacing:.5px;color:#00128d;">5% — 50,000,000</span>
+            <span style="font-size:13px;line-height:1.4;font-weight:500;">Team — locked</span>
+          </li>
+        </ul>
+      </div>
+      <a href="https://pump.fun/coin/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Commissioner',sans-serif;font-weight:700;font-size:15px;letter-spacing:.5px;text-transform:uppercase;padding:15px 30px;border-radius:999px;border:3px solid #00128d;background:#fee132;color:#00128d;transition:background .15s,color .15s;" style-hover="background:#00128d;color:#fee132;">Buy $RIPPING on pump.fun <span>↗</span></a>
+    </div>
   </section>
 
 </main>
 
-<!-- footer -->
-<footer class="ftr">
-  <a class="ftr__brand" href="#top">
-    <img class="ftr__logo" src="assets/pokeripping-wordmark.png" alt="PokeRipping"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-    <span class="ftr__brandText" style="display:none">POKE<span>RIPPING</span></span>
-  </a>
-  <div class="ftr__links">
-    <div><span class="label">Follow</span><a href="https://x.com/PokeRipping" target="_blank" rel="noopener">Twitter / X ↗</a></div>
-    <div><span class="label">Play</span><a href="https://pokedungeon.fun" target="_blank" rel="noopener">pokedungeon.fun ↗</a></div>
-    <div><span class="label">Token</span><a href="https://pump.fun/coin/" target="_blank" rel="noopener">$RIPPING on pump.fun ↗</a></div>
+<!-- ===== FOOTER ===== -->
+<footer style="background:#00128d;color:#efe7d3;padding:clamp(48px,6vw,80px) clamp(20px,5vw,72px) 34px;">
+  <div style="max-width:1180px;margin:0 auto;">
+    <a href="#top" style="display:inline-block;"><img src="assets/pokeripping-wordmark.png" alt="PokeRipping" style="height:clamp(46px,8vw,80px);width:auto;display:block;"></a>
+    <div style="display:flex;flex-wrap:wrap;gap:40px;margin:32px 0 34px;">
+      <div><span style="display:block;font-family:'Commissioner',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#00128d;background:#fee132;border-radius:999px;padding:4px 12px;width:fit-content;margin-bottom:12px;">Follow</span><a href="https://x.com/PokeRipping" target="_blank" rel="noopener" style="font-family:'Commissioner',sans-serif;font-weight:600;font-size:18px;" style-hover="color:#fee132;">Twitter / X ↗</a></div>
+      <div><span style="display:block;font-family:'Commissioner',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#00128d;background:#fee132;border-radius:999px;padding:4px 12px;width:fit-content;margin-bottom:12px;">Play</span><a href="https://pokedungeon.fun" target="_blank" rel="noopener" style="font-family:'Commissioner',sans-serif;font-weight:600;font-size:18px;" style-hover="color:#fee132;">pokedungeon.fun ↗</a></div>
+      <div><span style="display:block;font-family:'Commissioner',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#00128d;background:#fee132;border-radius:999px;padding:4px 12px;width:fit-content;margin-bottom:12px;">Token</span><a href="https://pump.fun/coin/" target="_blank" rel="noopener" style="font-family:'Commissioner',sans-serif;font-weight:600;font-size:18px;" style-hover="color:#fee132;">$RIPPING on pump.fun ↗</a></div>
+    </div>
+    <p style="max-width:760px;font-size:12px;line-height:1.6;font-weight:500;color:rgba(239,231,211,.6);border-top:1px solid rgba(254,225,50,.25);padding-top:20px;">PokeRipping is a community project and is not affiliated with, endorsed by, or sponsored by Nintendo, Game Freak, or The Pokémon Company. Nothing here is financial advice. Crypto is volatile — do your own research.</p>
+    <p style="font-size:12px;font-weight:500;color:rgba(239,231,211,.5);margin-top:14px;">© <span data-yr>2026</span> PokeRipping</p>
   </div>
-  <p class="ftr__disclaimer">PokeRipping is a community project and is not affiliated with, endorsed by, or sponsored by
-    Nintendo, Game Freak, or The Pokémon Company. Nothing here is financial advice. Crypto is volatile — do your own research.</p>
-  <p class="ftr__copy">© <span id="yr"></span> PokeRipping</p>
 </footer>
 
-<script src="main.js"></script>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;showCharacters&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;tickerSpeed&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:30,&quot;min&quot;:8,&quot;max&quot;:60,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const root = document;
+    // current year
+    root.querySelectorAll('[data-yr]').forEach(el => { el.textContent = new Date().getFullYear(); });
+
+    // ticker speed
+    const speed = this.props.tickerSpeed ?? 30;
+    root.querySelectorAll('[data-ticker]').forEach(el => { el.style.animationDuration = speed + 's'; });
+
+    // toggle characters
+    const showChars = this.props.showCharacters ?? true;
+    if (!showChars) {
+      root.querySelectorAll('[data-char]').forEach(el => { el.style.display = 'none'; });
+    }
+
+    // scroll reveal — enhancement only; never permanently hides content
+    const items = [...root.querySelectorAll('[data-reveal]')];
+    const show = (el) => { el.style.opacity = '1'; el.style.transform = 'none'; };
+    if ('IntersectionObserver' in window && items.length) {
+      items.forEach(el => {
+        const r = el.getBoundingClientRect();
+        const inView = r.top < (window.innerHeight || 0) && r.bottom > 0;
+        el.style.transition = 'opacity .6s ease, transform .6s ease';
+        if (inView) { show(el); return; }   // already visible: don't hide
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(26px)';
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      items.forEach(el => { if (el.style.opacity === '0') io.observe(el); });
+      // safety net: force-reveal anything still hidden
+      setTimeout(() => items.forEach(el => { if (el.style.opacity === '0') show(el); }), 1600);
+    } else {
+      items.forEach(show);
+    }
+  }
+}
+</script>
 </body>
 </html>
