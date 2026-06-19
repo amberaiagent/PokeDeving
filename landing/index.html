@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PokeRipping — $RIPPING</title>
+<meta name="description" content="PokeRipping rips real Pokémon card packs and airdrops them to $RIPPING holders. Hold bigger, win bigger.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- scrolling marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>$RIPPING&nbsp;✦&nbsp;HOLD BIGGER, WIN BIGGER&nbsp;✦&nbsp;REAL CARDS, REAL AIRDROPS&nbsp;✦&nbsp;POKERIPPING&nbsp;✦&nbsp;</span>
+    <span>$RIPPING&nbsp;✦&nbsp;HOLD BIGGER, WIN BIGGER&nbsp;✦&nbsp;REAL CARDS, REAL AIRDROPS&nbsp;✦&nbsp;POKERIPPING&nbsp;✦&nbsp;</span>
+  </div>
+</div>
+
+<!-- header -->
+<header class="hdr">
+  <a href="#top" class="hdr__brand">
+    <img class="hdr__logo" src="assets/pokeripping-logo.png" alt="PokeRipping"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+    <span class="hdr__brandText" style="display:none">PokeRipping</span>
+  </a>
+  <nav class="hdr__nav">
+    <a href="#about">About</a>
+    <a href="#drop">The drop</a>
+    <a href="#game">Game</a>
+    <a href="#token">Tokenomics</a>
+  </nav>
+  <a class="btn btn--buy" href="https://pump.fun/coin/" target="_blank" rel="noopener">Buy $RIPPING <span>↗</span></a>
+</header>
+
+<main id="top">
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="hero__eyebrow"><span>SOLANA · PUMP.FUN</span><span>POKÉMON CARDS · ON-CHAIN</span></div>
+    <img id="logo" class="hero__logo" src="assets/pokeripping-logo.png" alt="PokeRipping"
+         onerror="this.style.display='none';document.getElementById('logoText').style.display='block';">
+    <h1 id="logoText" class="hero__logoText">Poke<span>Ripping</span></h1>
+
+    <p class="hero__tag">An autonomous pack-ripping machine. The bot claims trading fees, buys real
+      <b>Pokémon card packs</b> on Collector&nbsp;Crypt, rips them, and airdrops the cards to <b>$RIPPING</b> holders.</p>
+
+    <div class="hero__cta">
+      <a class="btn btn--buy big" href="https://pump.fun/coin/" target="_blank" rel="noopener">Buy $RIPPING <span>↗</span></a>
+      <a class="btn btn--ghost big" href="https://pokedungeon.fun" target="_blank" rel="noopener">Play PokeDungeon <span>↗</span></a>
+      <a class="btn btn--ghost big" href="https://x.com/PokeRipping" target="_blank" rel="noopener">Twitter / X <span>↗</span></a>
+    </div>
+
+    <img class="hero__char" src="assets/gengar.png" alt="" onerror="this.remove()">
+  </section>
+
+  <!-- about / the loop -->
+  <section id="about" class="about">
+    <div class="about__big" aria-hidden="true">ABOUT</div>
+    <div class="about__body">
+      <span class="label">WHAT IS POKERIPPING</span>
+      <p>$RIPPING is a token on <b>pump.fun</b>. Every trade generates fees — and instead of sitting idle,
+        those fees go to work. Our bot claims them, spends them on real <b>Pokémon card packs</b> at
+        <b>Collector&nbsp;Crypt</b>, opens the packs, and airdrops what it pulls straight to the wallets of
+        $RIPPING holders. The better the pull, the deeper into the holder leaderboard it can land.</p>
+    </div>
+
+    <ol class="loop">
+      <li><span>01</span><h3>Trade</h3><p>$RIPPING trades on pump.fun and accrues fees.</p></li>
+      <li><span>02</span><h3>Claim</h3><p>The bot automatically claims those creator fees.</p></li>
+      <li><span>03</span><h3>Rip</h3><p>Fees buy Pokémon packs on Collector Crypt — and rip them.</p></li>
+      <li><span>04</span><h3>Airdrop</h3><p>Pulled cards are airdropped to $RIPPING holders.</p></li>
+    </ol>
+  </section>
+
+  <!-- the drop / tiers -->
+  <section id="drop" class="drop">
+    <div class="drop__head">
+      <h2>THE DROP</h2>
+      <p>Where a card lands depends on how good the pull is. <b>Hold bigger, win bigger.</b></p>
+    </div>
+    <div class="tiers">
+      <article class="tier tier--gem">
+        <div class="tier__icon">💎</div>
+        <div class="tier__val">$100+</div>
+        <div class="tier__pool">random holder from the <b>TOP&nbsp;10</b></div>
+      </article>
+      <article class="tier tier--blue">
+        <div class="tier__icon">🔷</div>
+        <div class="tier__val">$50 – $100</div>
+        <div class="tier__pool">random holder from the <b>TOP&nbsp;25</b></div>
+      </article>
+      <article class="tier tier--white">
+        <div class="tier__icon">⚪</div>
+        <div class="tier__val">under $50</div>
+        <div class="tier__pool">random holder from the <b>TOP&nbsp;50</b></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- game -->
+  <section id="game" class="game">
+    <img class="game__char" src="assets/bulbasaur.png" alt="" onerror="this.remove()">
+    <div class="game__text">
+      <span class="label">THE GAME</span>
+      <img class="game__logo" src="assets/pokedungeon-logo.png" alt="PokeDungeon"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+      <h2 style="display:none">POKE<br>DUNGEON</h2>
+      <p>Explore a foggy cavern, throw Poké Balls to catch creatures, loot chests (mind the mimic),
+        crack the Vault — and earn <b>$RIPPING</b> while you play.</p>
+      <ul class="game__facts">
+        <li><b>6 dungeons.</b> Dungeon&nbsp;1 is free for everyone — dungeons 2–6 are for $RIPPING holders only.</li>
+        <li><b>Up to 1,500,000 $RIPPING</b> per player across all six dungeons.</li>
+        <li><b>200,000,000 $RIPPING</b> total to be given away through the game.</li>
+      </ul>
+      <a class="btn btn--buy big" href="https://pokedungeon.fun" target="_blank" rel="noopener">Play at pokedungeon.fun <span>↗</span></a>
+    </div>
+    <img class="game__char game__char--2" src="assets/chikorita.png" alt="" onerror="this.remove()">
+  </section>
+
+  <!-- tokenomics -->
+  <section id="token" class="token">
+    <div class="token__head">
+      <h2>$RIPPING</h2>
+      <p>Total supply <b>1,000,000,000</b> · live on pump.fun</p>
+    </div>
+    <div class="token__chart">
+      <div class="donut">
+        <svg viewBox="0 0 220 220" role="img" aria-label="$RIPPING token distribution">
+          <circle cx="110" cy="110" r="80" fill="none" stroke="#e6dcc0" stroke-width="34"/>
+          <circle cx="110" cy="110" r="80" fill="none" stroke="#0341a4" stroke-width="34" stroke-dasharray="374 128.65" stroke-dashoffset="0" transform="rotate(-90 110 110)"/>
+          <circle cx="110" cy="110" r="80" fill="none" stroke="#fee132" stroke-width="34" stroke-dasharray="97.53 405.12" stroke-dashoffset="-376.99" transform="rotate(-90 110 110)"/>
+          <circle cx="110" cy="110" r="80" fill="none" stroke="#00128d" stroke-width="34" stroke-dasharray="22.13 480.52" stroke-dashoffset="-477.52" transform="rotate(-90 110 110)"/>
+        </svg>
+        <div class="donut__center"><b>1B</b><small>$RIPPING</small></div>
+      </div>
+      <ul class="legend">
+        <li class="lg"><span class="lg__dot" style="background:#0341a4"></span><span class="lg__main">75% — 750,000,000</span><span class="lg__sub">Circulating — freely traded on pump.fun</span></li>
+        <li class="lg"><span class="lg__dot" style="background:#fee132"></span><span class="lg__main">20% — 200,000,000</span><span class="lg__sub">Airdrops &amp; game rewards</span></li>
+        <li class="lg"><span class="lg__dot" style="background:#00128d"></span><span class="lg__main">5% — 50,000,000</span><span class="lg__sub">Team — locked</span></li>
+      </ul>
+    </div>
+    <a class="btn btn--buy big center" href="https://pump.fun/coin/" target="_blank" rel="noopener">Buy $RIPPING on pump.fun <span>↗</span></a>
+  </section>
+
+</main>
+
+<!-- footer -->
+<footer class="ftr">
+  <a class="ftr__brand" href="#top">
+    <img class="ftr__logo" src="assets/pokeripping-logo.png" alt="PokeRipping"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+    <span class="ftr__brandText" style="display:none">POKE<span>RIPPING</span></span>
+  </a>
+  <div class="ftr__links">
+    <div><span class="label">Follow</span><a href="https://x.com/PokeRipping" target="_blank" rel="noopener">Twitter / X ↗</a></div>
+    <div><span class="label">Play</span><a href="https://pokedungeon.fun" target="_blank" rel="noopener">pokedungeon.fun ↗</a></div>
+    <div><span class="label">Token</span><a href="https://pump.fun/coin/" target="_blank" rel="noopener">$RIPPING on pump.fun ↗</a></div>
+  </div>
+  <p class="ftr__disclaimer">PokeRipping is a community project and is not affiliated with, endorsed by, or sponsored by
+    Nintendo, Game Freak, or The Pokémon Company. Nothing here is financial advice. Crypto is volatile — do your own research.</p>
+  <p class="ftr__copy">© <span id="yr"></span> PokeRipping</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

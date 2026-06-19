@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>PokeDungeon</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<!-- top-right buttons (shown in play) -->
+<div id="topbtns">
+  <button id="bagBtn" class="iconbtn" title="Inventory (I)">🎒</button>
+  <button id="gearBtn" class="iconbtn" title="Settings (O)">⚙</button>
+</div>
+
+<!-- INTRO -->
+<div id="intro" class="layer">
+  <img id="titleImg" src="assets/PokeDungeon.png" alt="PokeDungeon"
+       onload="var t=document.getElementById('title'); if(t) t.style.display='none';"
+       onerror="this.style.display='none';">
+  <div id="title">Poke<span>Dungeon</span></div>
+  <div id="sub">ZONE I · THE FOGGED CAVERN</div>
+  <div id="press">PRESS SPACE / TAP TO ENTER</div>
+</div>
+
+<!-- SETTINGS -->
+<div id="settings" class="panel">
+  <div class="panel-card">
+    <h2>Settings</h2>
+    <div class="row"><span>Music</span><label class="sw"><input type="checkbox" id="musicTog"><i></i></label></div>
+    <div class="row"><span>Music volume</span><input type="range" id="musicVol" min="0" max="100"></div>
+    <div class="row"><span>Sound effects</span><label class="sw"><input type="checkbox" id="sfxTog"><i></i></label></div>
+    <div class="row"><span>SFX volume</span><input type="range" id="sfxVol" min="0" max="100"></div>
+    <button class="closebtn" id="settingsClose">CLOSE</button>
+  </div>
+</div>
+
+<!-- INVENTORY -->
+<div id="inventory" class="panel">
+  <div class="panel-card">
+    <h2>Inventory</h2>
+    <div class="invmeta"><span id="invBalls">Poké Balls: 16</span><span id="invTokens">0 $RIPPED</span></div>
+    <div id="invGrid" class="invgrid"></div>
+    <div id="invEmpty" class="invempty">No creatures caught yet — explore the fog and throw a ball!</div>
+    <button class="closebtn" id="invClose">CLOSE</button>
+  </div>
+</div>
+
+<!-- WIN / WHITELIST -->
+<div id="win" class="layer">
+  <div class="vt">THE VAULT OPENS</div>
+  <div class="prize"><span id="wlTotal">0</span><small>$RIPPED EARNED</small></div>
+  <div class="break" id="wlBreak"></div>
+
+  <div class="zones" id="zoneMap">
+    <div class="zone done"><b>I</b><span>CLEARED</span></div>
+    <div class="zone locked"><b>II</b><span>LOCKED</span></div>
+    <div class="zone locked"><b>III</b><span>LOCKED</span></div>
+    <div class="zone locked"><b>IV</b><span>LOCKED</span></div>
+    <div class="zone locked"><b>V</b><span>LOCKED</span></div>
+    <div class="zone locked"><b>VI</b><span>LOCKED</span></div>
+  </div>
+
+  <div class="wl">Paste your wallet to join the $RIPPED airdrop whitelist</div>
+  <input id="wallet" placeholder="your Solana wallet address" spellcheck="false" autocomplete="off">
+  <button id="joinBtn">JOIN WHITELIST</button>
+  <div class="ok" id="okmsg"></div>
+</div>
+
+<script src="audio.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

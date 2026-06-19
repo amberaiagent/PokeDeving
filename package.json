@@ -1,0 +1,14 @@
+{
+  "name": "pokedungeon",
+  "version": "1.0.0",
+  "description": "PokeDungeon — explore the cavern, catch all 10 creatures, crack the Vault and join the $RIPPED airdrop whitelist.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
